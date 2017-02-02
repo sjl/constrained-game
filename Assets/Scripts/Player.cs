@@ -11,11 +11,17 @@ public class Player : MonoBehaviour {
     public float maxVelocity = 10.0f;
 
     public GameObject bulletPrefab;
+    public GameObject engine;
+    public GameObject rotator;
 
+    private ParticleSystem engineParticles;
+    private ParticleSystem rotatorParticles;
     private Rigidbody2D physics;
 
     void Start () {
         physics = GetComponent<Rigidbody2D>();
+        engineParticles = engine.GetComponent<ParticleSystem>();
+        rotatorParticles = rotator.GetComponent<ParticleSystem>();
     }
 
     void FixedUpdate () {
@@ -35,6 +41,18 @@ public class Player : MonoBehaviour {
     void Update () {
         if (InputShoot()) {
             Shoot();
+        }
+
+        if (InputThrust()) {
+            engineParticles.Play();
+        } else {
+            engineParticles.Stop();
+        }
+
+        if (InputRotate()) {
+            rotatorParticles.Play();
+        } else {
+            rotatorParticles.Stop();
         }
     }
 
