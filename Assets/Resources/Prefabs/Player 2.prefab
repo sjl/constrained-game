@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 114845585636804184}
   - component: {fileID: 50189032643744948}
   - component: {fileID: 60646169584613374}
+  - component: {fileID: 95194307691502106}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Untagged
@@ -178,6 +179,23 @@ PolygonCollider2D:
       - {x: 0.15028262, y: 0.04396832}
       - {x: 0.10857272, y: 0.24238026}
       - {x: -0.011142015, y: 0.4075812}
+--- !u!95 &95194307691502106
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359316936532716}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6cefe5ee611234284b921776ad667525, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114845585636804184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -197,6 +215,7 @@ MonoBehaviour:
     type: 2}
   engine: {fileID: 1718182101683652}
   rotator: {fileID: 1232916635082992}
+  smoke: {fileID: 1260338440234394}
 --- !u!198 &198001738580435728
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -5409,8 +5428,8 @@ ParticleSystem:
   lengthInSec: 5
   speed: 1
   looping: 1
-  prewarm: 1
-  playOnAwake: 1
+  prewarm: 0
+  playOnAwake: 0
   autoRandomSeed: 1
   startDelay:
     scalar: 0
@@ -5454,7 +5473,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 293463360
+  randomSeed: 1707292340
   InitialModule:
     serializedVersion: 3
     enabled: 1

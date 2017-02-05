@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour {
     public int playerNumber = 1;
@@ -9,19 +10,31 @@ public class Player : MonoBehaviour {
     public float thrust = 20.0f;
     public float torque = 2.0f;
     public float maxVelocity = 10.0f;
+    private bool inputEnabled = false;
+    private bool invincible = false;
 
     public GameObject bulletPrefab;
     public GameObject engine;
     public GameObject rotator;
+    public GameObject smoke;
 
+    private ParticleSystem smokeParticles;
     private ParticleSystem engineParticles;
     private ParticleSystem rotatorParticles;
     private Rigidbody2D physics;
+    private Animator animator;
+
+    private static int AnimatorInvincible = Animator.StringToHash("Invincible");
 
     void Start () {
         physics = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+
+        smokeParticles = smoke.GetComponent<ParticleSystem>();
         engineParticles = engine.GetComponent<ParticleSystem>();
         rotatorParticles = rotator.GetComponent<ParticleSystem>();
+
+        Spawn();
     }
 
     void FixedUpdate () {
@@ -39,6 +52,11 @@ public class Player : MonoBehaviour {
     }
 
     void Update () {
+        // TODO: DEBUG
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Spawn();
+        }
+
         if (InputShoot()) {
             Shoot();
         }
@@ -59,23 +77,23 @@ public class Player : MonoBehaviour {
     // Input ------------------------------------------------------------------
     private bool InputThrust() {
         if (playerNumber == 1) {
-            return Input.GetKey(KeyCode.A);
+            return inputEnabled && Input.GetKey(KeyCode.A);
         } else {
-            return Input.GetKey(KeyCode.J);
+            return inputEnabled && Input.GetKey(KeyCode.J);
         }
     }
     private bool InputRotate() {
         if (playerNumber == 1) {
-            return Input.GetKey(KeyCode.S);
+            return inputEnabled && Input.GetKey(KeyCode.S);
         } else {
-            return Input.GetKey(KeyCode.K);
+            return inputEnabled && Input.GetKey(KeyCode.K);
         }
     }
     private bool InputShoot() {
         if (playerNumber == 1) {
-            return Input.GetKeyDown(KeyCode.D);
+            return inputEnabled && Input.GetKeyDown(KeyCode.D);
         } else {
-            return Input.GetKeyDown(KeyCode.L);
+            return inputEnabled && Input.GetKeyDown(KeyCode.L);
         }
     }
 
@@ -87,5 +105,51 @@ public class Player : MonoBehaviour {
 
         Rigidbody2D bulletPhysics = bullet.GetComponent<Rigidbody2D>();
         bulletPhysics.AddForce(this.transform.up * 100.0f);
+    }
+
+    // Respawning -------------------------------------------------------------
+    private Vector3 StartPosition() {
+        if (playerNumber == 1) {
+            return new Vector3(-8.0f, 0.0f, 0.0f);
+        } else {
+            return new Vector3(8.0f, 0.0f, 0.0f);
+        }
+    }
+    private void ResetShip() {
+        // Zero out the physics stuff so we don't move a bit after respawn.
+        physics.velocity = Vector2.zero;
+        physics.angularVelocity = 0.0f;
+
+        // And move back to the origin.
+        transform.position = StartPosition();
+        transform.eulerAngles = Vector3.zero;
+        transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
+    }
+    private void Spawn() {
+        ResetShip();
+        inputEnabled = false;
+        smokeParticles.Stop();
+
+        var tween = new GoTweenConfig();
+        tween.easeType = GoEaseType.BounceOut;
+        tween.onComplete(SpawnComplete);
+        Go.to(transform, 1.0f, tween.scale(1.0f));
+
+        StartCoroutine(ApplyInvincibility());
+    }
+    private void SpawnComplete(AbstractGoTween tween) {
+        inputEnabled = true;
+        smokeParticles.Play();
+    }
+
+    // Invincibility ----------------------------------------------------------
+    private IEnumerator ApplyInvincibility() {
+        invincible = true;
+        animator.SetBool(AnimatorInvincible, true);
+
+        yield return new WaitForSeconds(2.0f);
+
+        animator.SetBool(AnimatorInvincible, false);
+        invincible = false;
     }
 }
