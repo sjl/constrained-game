@@ -6,15 +6,12 @@ public class Asteroid : MonoBehaviour {
     public GameObject explosionPrefab;
 
     void Start () {
-        StartCoroutine(DebugTest());
     }
 
     void Update () {
-    }
-
-    private IEnumerator DebugTest() {
-        yield return new WaitForSeconds(4.0f);
-        Explode();
+        if (Input.GetKeyDown(KeyCode.X)) {
+            Explode();
+        }
     }
 
     // Destruction ------------------------------------------------------------

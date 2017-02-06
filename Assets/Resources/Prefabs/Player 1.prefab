@@ -5473,12 +5473,12 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 81134872
+  randomSeed: -516248325
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
-      scalar: 1.5
+      scalar: 1.4
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5517,7 +5517,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 0.8
+      scalar: 0.9
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -5527,34 +5527,22 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 0
+          value: 0.5555556
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
-      minMaxState: 0
+        m_RotationOrder: 0
+      minMaxState: 3
     startColor:
       serializedVersion: 2
       maxGradient:
@@ -5882,7 +5870,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    randomizeRotationDirection: 0
+    randomizeRotationDirection: 0.5
     maxNumParticles: 1000
     size3D: 0
     rotation3D: 0
@@ -6029,19 +6017,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    cnt0: 30
-    cnt1: 30
+    cnt0: 2
+    cnt1: 4
     cnt2: 30
     cnt3: 30
-    cntmax0: 30
-    cntmax1: 30
+    cntmax0: 10
+    cntmax1: 10
     cntmax2: 30
     cntmax3: 30
     time0: 0
-    time1: 0
+    time1: 1
     time2: 0
     time3: 0
-    m_BurstCount: 0
+    m_BurstCount: 2
   SizeModule:
     enabled: 1
     curve:
@@ -6056,10 +6044,10 @@ ParticleSystem:
           outSlope: 0
           tangentMode: 0
         - serializedVersion: 2
-          time: 1
-          value: 0.29729727
-          inSlope: 0.041956212
-          outSlope: 0.041956212
+          time: 0.993865
+          value: 0
+          inSlope: -3.2484303
+          outSlope: -3.2484303
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -6880,7 +6868,7 @@ ParticleSystem:
   NoiseModule:
     enabled: 0
     strength:
-      scalar: 1
+      scalar: 0
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6996,7 +6984,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
       minMaxState: 0
-    separateAxes: 0
+    separateAxes: 1
     frequency: 0.5
     damping: 1
     octaves: 1
