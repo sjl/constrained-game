@@ -14,9 +14,9 @@ public class Player : MonoBehaviour {
     private bool invincible = false;
 
     private int invincibleLayer;
-    private int playerLayer;
+    private int normalLayer;
 
-    private float bulletSpeed = 150.0f;
+    private float bulletSpeed = 350.0f;
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour {
         rotatorParticles = rotator.GetComponent<ParticleSystem>();
 
         invincibleLayer = LayerMask.NameToLayer("Invincible");
-        playerLayer = LayerMask.NameToLayer("Gravity");
+        normalLayer = LayerMask.NameToLayer("Gravity");
 
         Spawn();
     }
@@ -86,23 +86,23 @@ public class Player : MonoBehaviour {
     // Input ------------------------------------------------------------------
     private bool InputThrust() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKey(KeyCode.A);
+            return inputEnabled && Input.GetKey(KeyCode.S);
         } else {
-            return inputEnabled && Input.GetKey(KeyCode.J);
+            return inputEnabled && Input.GetKey(KeyCode.K);
         }
     }
     private bool InputRotate() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKey(KeyCode.S);
+            return inputEnabled && Input.GetKey(KeyCode.A);
         } else {
-            return inputEnabled && Input.GetKey(KeyCode.K);
+            return inputEnabled && Input.GetKey(KeyCode.L);
         }
     }
     private bool InputShoot() {
         if (playerNumber == 1) {
             return inputEnabled && Input.GetKeyDown(KeyCode.D);
         } else {
-            return inputEnabled && Input.GetKeyDown(KeyCode.L);
+            return inputEnabled && Input.GetKeyDown(KeyCode.J);
         }
     }
 
@@ -177,6 +177,6 @@ public class Player : MonoBehaviour {
 
         animator.SetBool(AnimatorInvincible, false);
         invincible = false;
-        gameObject.layer = playerLayer;
+        gameObject.layer = normalLayer;
     }
 }

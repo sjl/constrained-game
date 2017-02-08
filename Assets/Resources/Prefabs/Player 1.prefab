@@ -152,7 +152,7 @@ Rigidbody2D:
   m_LinearDrag: 2
   m_AngularDrag: 7
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: da979441cb13d4e849e80052ed3271aa, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -166,7 +166,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   m_Points:
@@ -226,7 +226,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1294283368104492}
   serializedVersion: 5
   lengthInSec: 5
-  speed: 1
+  simulationSpeed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 0
@@ -2827,7 +2827,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1519618829817010}
   serializedVersion: 5
   lengthInSec: 5
-  speed: 1
+  simulationSpeed: 1
   looping: 1
   prewarm: 1
   playOnAwake: 0
@@ -5428,7 +5428,7 @@ ParticleSystem:
   m_GameObject: {fileID: 1741181319156886}
   serializedVersion: 5
   lengthInSec: 5
-  speed: 1
+  simulationSpeed: 1
   looping: 1
   prewarm: 0
   playOnAwake: 0
