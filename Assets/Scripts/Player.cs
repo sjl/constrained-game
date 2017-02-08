@@ -13,7 +13,13 @@ public class Player : MonoBehaviour {
     private bool inputEnabled = false;
     private bool invincible = false;
 
+    private int invincibleLayer;
+    private int playerLayer;
+
+    private float bulletSpeed = 150.0f;
+
     public GameObject bulletPrefab;
+    public GameObject explosionPrefab;
     public GameObject engine;
     public GameObject rotator;
     public GameObject smoke;
@@ -23,16 +29,21 @@ public class Player : MonoBehaviour {
     private ParticleSystem rotatorParticles;
     private Rigidbody2D physics;
     private Animator animator;
+    private PolygonCollider2D shipCollider;
 
     private static int AnimatorInvincible = Animator.StringToHash("Invincible");
 
     void Start () {
         physics = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        shipCollider = GetComponent<PolygonCollider2D>();
 
         smokeParticles = smoke.GetComponent<ParticleSystem>();
         engineParticles = engine.GetComponent<ParticleSystem>();
         rotatorParticles = rotator.GetComponent<ParticleSystem>();
+
+        invincibleLayer = LayerMask.NameToLayer("Invincible");
+        playerLayer = LayerMask.NameToLayer("Gravity");
 
         Spawn();
     }
@@ -100,17 +111,30 @@ public class Player : MonoBehaviour {
     // Shooting ---------------------------------------------------------------
     private void Shoot() {
         GameObject bullet = Instantiate(bulletPrefab);
-        bullet.transform.position = this.transform.position + (this.transform.up * 0.5f);
+        bullet.transform.position = this.transform.position + (this.transform.up * 0.6f);
         bullet.transform.up = this.transform.up;
 
         Rigidbody2D bulletPhysics = bullet.GetComponent<Rigidbody2D>();
-        bulletPhysics.AddForce(this.transform.up * 100.0f);
+        bulletPhysics.AddForce(this.transform.up * bulletSpeed);
 
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.player = gameObject;
     }
 
     // Respawning -------------------------------------------------------------
+    public void Kill() {
+        if (!invincible) {
+            SpawnExplosion();
+            Spawn();
+        }
+    }
+
+    private void SpawnExplosion() {
+        GameObject explosion = Instantiate(explosionPrefab);
+        explosion.transform.position = this.transform.position;
+        Destroy(explosion, explosion.GetComponent<ParticleSystem>().duration);
+    }
+
     private Vector3 StartPosition() {
         if (playerNumber == 1) {
             return new Vector3(-8.0f, 0.0f, 0.0f);
@@ -147,6 +171,7 @@ public class Player : MonoBehaviour {
 
     // Invincibility ----------------------------------------------------------
     private IEnumerator ApplyInvincibility() {
+        gameObject.layer = invincibleLayer;
         invincible = true;
         animator.SetBool(AnimatorInvincible, true);
 
@@ -154,5 +179,6 @@ public class Player : MonoBehaviour {
 
         animator.SetBool(AnimatorInvincible, false);
         invincible = false;
+        gameObject.layer = playerLayer;
     }
 }

@@ -18,7 +18,7 @@ public class Asteroid : MonoBehaviour {
     // Destruction ------------------------------------------------------------
     private void SpawnChildren() {
         if (childPrefab != null) {
-            int count = Random.RandomRange(2, 4);
+            int count = Random.Range(2, 4);
             for (int i = 0; i < count; i++) {
                 SpawnChild();
             }
@@ -41,7 +41,7 @@ public class Asteroid : MonoBehaviour {
         Destroy(explosion, explosion.GetComponent<ParticleSystem>().duration);
     }
 
-    private void Explode() {
+    public void Explode() {
         SpawnExplosion();
         SpawnChildren();
         Destroy(gameObject);
