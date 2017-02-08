@@ -20,6 +20,7 @@ public class AsteroidField : MonoBehaviour {
         if (asteroidCount == 0) {
             PopulateField(density);
             density *= densityScale;
+            SoundManager.FieldCleared();
         }
     }
 

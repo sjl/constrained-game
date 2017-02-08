@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour {
         if (collision.gameObject.tag == "Player") {
             Destroy(gameObject);
             collision.gameObject.GetComponent<Player>().Kill();
+            SoundManager.FriendlyFire();
         } else if (collision.gameObject.tag == "Asteroid") {
             Destroy(gameObject);
             collision.gameObject.GetComponent<Asteroid>().Explode();

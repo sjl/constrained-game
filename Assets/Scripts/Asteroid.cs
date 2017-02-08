@@ -35,7 +35,6 @@ public class Asteroid : MonoBehaviour {
         physics.AddForce(direction);
         AsteroidField.asteroidCount += 1;
     }
-
     private void SpawnExplosion() {
         GameObject explosion = Instantiate(explosionPrefab);
         explosion.transform.position = this.transform.position;
@@ -47,5 +46,13 @@ public class Asteroid : MonoBehaviour {
         SpawnChildren();
         Destroy(gameObject);
         AsteroidField.asteroidCount -= 1;
+    }
+
+    // Collision --------------------------------------------------------------
+    void OnCollisionEnter2D (Collision2D collision) {
+        if (collision.gameObject.tag == "Player") {
+            Explode();
+            collision.gameObject.GetComponent<Player>().Kill();
+        }
     }
 }
