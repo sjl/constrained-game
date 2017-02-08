@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3e83fbe8a05164cb890c91655965667f
+timeCreated: 1486553796
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 200
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Press Start
+  fontNames:
+  - Press Start
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8a6441629a4f8924b9a762e9e38b53ae, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -61,11 +61,6 @@ public class Player : MonoBehaviour {
     }
 
     void Update () {
-        // TODO: DEBUG
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Spawn();
-        }
-
         if (InputShoot()) {
             Shoot();
         }
