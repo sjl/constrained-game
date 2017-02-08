@@ -33,6 +33,7 @@ public class Asteroid : MonoBehaviour {
 
         Vector2 direction = Random.insideUnitCircle * 200.0f;
         physics.AddForce(direction);
+        AsteroidField.asteroidCount += 1;
     }
 
     private void SpawnExplosion() {
@@ -45,5 +46,6 @@ public class Asteroid : MonoBehaviour {
         SpawnExplosion();
         SpawnChildren();
         Destroy(gameObject);
+        AsteroidField.asteroidCount -= 1;
     }
 }

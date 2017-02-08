@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
     public float thrust = 20.0f;
     public float torque = 2.0f;
     public float maxVelocity = 10.0f;
-    private bool inputEnabled = false;
+    private bool inputEnabled = true;
     private bool invincible = false;
 
     private int invincibleLayer;
@@ -152,7 +152,6 @@ public class Player : MonoBehaviour {
     }
     private void Spawn() {
         ResetShip();
-        inputEnabled = false;
         smokeParticles.Stop();
 
         var tween = new GoTweenConfig();
@@ -163,7 +162,6 @@ public class Player : MonoBehaviour {
         StartCoroutine(ApplyInvincibility());
     }
     private void SpawnComplete(AbstractGoTween tween) {
-        inputEnabled = true;
         smokeParticles.Play();
     }
 
