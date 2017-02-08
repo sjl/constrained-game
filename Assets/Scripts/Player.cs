@@ -10,10 +10,16 @@ public class Player : MonoBehaviour {
     public float thrust = 20.0f;
     public float torque = 2.0f;
     public float maxVelocity = 10.0f;
-    private bool inputEnabled = false;
+    private bool inputEnabled = true;
     private bool invincible = false;
 
+    private int invincibleLayer;
+    private int normalLayer;
+
+    private float bulletSpeed = 350.0f;
+
     public GameObject bulletPrefab;
+    public GameObject explosionPrefab;
     public GameObject engine;
     public GameObject rotator;
     public GameObject smoke;
@@ -34,6 +40,9 @@ public class Player : MonoBehaviour {
         engineParticles = engine.GetComponent<ParticleSystem>();
         rotatorParticles = rotator.GetComponent<ParticleSystem>();
 
+        invincibleLayer = LayerMask.NameToLayer("Invincible");
+        normalLayer = LayerMask.NameToLayer("Gravity");
+
         Spawn();
     }
 
@@ -52,11 +61,6 @@ public class Player : MonoBehaviour {
     }
 
     void Update () {
-        // TODO: DEBUG
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Spawn();
-        }
-
         if (InputShoot()) {
             Shoot();
         }
@@ -77,37 +81,53 @@ public class Player : MonoBehaviour {
     // Input ------------------------------------------------------------------
     private bool InputThrust() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKey(KeyCode.A);
+            return inputEnabled && Input.GetKey(KeyCode.S);
         } else {
-            return inputEnabled && Input.GetKey(KeyCode.J);
+            return inputEnabled && Input.GetKey(KeyCode.K);
         }
     }
     private bool InputRotate() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKey(KeyCode.S);
+            return inputEnabled && Input.GetKey(KeyCode.A);
         } else {
-            return inputEnabled && Input.GetKey(KeyCode.K);
+            return inputEnabled && Input.GetKey(KeyCode.L);
         }
     }
     private bool InputShoot() {
         if (playerNumber == 1) {
             return inputEnabled && Input.GetKeyDown(KeyCode.D);
         } else {
-            return inputEnabled && Input.GetKeyDown(KeyCode.L);
+            return inputEnabled && Input.GetKeyDown(KeyCode.J);
         }
     }
 
     // Shooting ---------------------------------------------------------------
     private void Shoot() {
         GameObject bullet = Instantiate(bulletPrefab);
-        bullet.transform.position = this.transform.position + (this.transform.up * 0.5f);
+        bullet.transform.position = this.transform.position + (this.transform.up * 0.6f);
         bullet.transform.up = this.transform.up;
 
         Rigidbody2D bulletPhysics = bullet.GetComponent<Rigidbody2D>();
-        bulletPhysics.AddForce(this.transform.up * 100.0f);
+        bulletPhysics.AddForce(this.transform.up * bulletSpeed);
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.player = gameObject;
     }
 
     // Respawning -------------------------------------------------------------
+    public void Kill() {
+        if (!invincible) {
+            SpawnExplosion();
+            Spawn();
+        }
+    }
+
+    private void SpawnExplosion() {
+        GameObject explosion = Instantiate(explosionPrefab);
+        explosion.transform.position = this.transform.position;
+        Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
+    }
+
     private Vector3 StartPosition() {
         if (playerNumber == 1) {
             return new Vector3(-8.0f, 0.0f, 0.0f);
@@ -127,7 +147,6 @@ public class Player : MonoBehaviour {
     }
     private void Spawn() {
         ResetShip();
-        inputEnabled = false;
         smokeParticles.Stop();
 
         var tween = new GoTweenConfig();
@@ -138,12 +157,12 @@ public class Player : MonoBehaviour {
         StartCoroutine(ApplyInvincibility());
     }
     private void SpawnComplete(AbstractGoTween tween) {
-        inputEnabled = true;
         smokeParticles.Play();
     }
 
     // Invincibility ----------------------------------------------------------
     private IEnumerator ApplyInvincibility() {
+        gameObject.layer = invincibleLayer;
         invincible = true;
         animator.SetBool(AnimatorInvincible, true);
 
@@ -151,5 +170,6 @@ public class Player : MonoBehaviour {
 
         animator.SetBool(AnimatorInvincible, false);
         invincible = false;
+        gameObject.layer = normalLayer;
     }
 }
