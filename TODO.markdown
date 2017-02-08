@@ -1,7 +1,6 @@
 TODO
 ====
 
-* Find pixel art ships/asteroids/etc.
 * Find music.
 * Find sound effects.
 * Start screen.
@@ -10,12 +9,8 @@ TODO
 Mechanics
 ---------
 
-* Rotating
-* Shooting
-* Thrusting
 * Player collision
-* Respawning
 * Asteroid breakup
-* Asteroid physics
+* Asteroid bouncing
 * Initial asteroid field generation
 

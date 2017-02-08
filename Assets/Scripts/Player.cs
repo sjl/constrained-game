@@ -105,6 +105,9 @@ public class Player : MonoBehaviour {
 
         Rigidbody2D bulletPhysics = bullet.GetComponent<Rigidbody2D>();
         bulletPhysics.AddForce(this.transform.up * 100.0f);
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.player = gameObject;
     }
 
     // Respawning -------------------------------------------------------------

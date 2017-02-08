@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50841507111105002}
   - component: {fileID: 60383814264740514}
   - component: {fileID: 95617812558198274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4924698036260860}
   - component: {fileID: 198397773802463154}
   - component: {fileID: 199371719848495298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 4918060506679964}
   - component: {fileID: 198665754536792714}
   - component: {fileID: 199947312564152646}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 4424766228611374}
   - component: {fileID: 198934613308102746}
   - component: {fileID: 199429101441671810}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Asteroid : MonoBehaviour {
     public GameObject explosionPrefab;
+    public GameObject childPrefab;
 
     void Start () {
     }
@@ -16,7 +17,22 @@ public class Asteroid : MonoBehaviour {
 
     // Destruction ------------------------------------------------------------
     private void SpawnChildren() {
-        // TODO
+        if (childPrefab != null) {
+            int count = Random.RandomRange(2, 4);
+            for (int i = 0; i < count; i++) {
+                SpawnChild();
+            }
+        }
+    }
+    private void SpawnChild() {
+        GameObject child = Instantiate(childPrefab);
+        Rigidbody2D physics = child.GetComponent<Rigidbody2D>();
+
+        Vector3 location = Random.insideUnitCircle * 1.0f;
+        child.transform.position = transform.position + location;
+
+        Vector2 direction = Random.insideUnitCircle * 200.0f;
+        physics.AddForce(direction);
     }
 
     private void SpawnExplosion() {
