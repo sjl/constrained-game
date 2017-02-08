@@ -29,14 +29,12 @@ public class Player : MonoBehaviour {
     private ParticleSystem rotatorParticles;
     private Rigidbody2D physics;
     private Animator animator;
-    private PolygonCollider2D shipCollider;
 
     private static int AnimatorInvincible = Animator.StringToHash("Invincible");
 
     void Start () {
         physics = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        shipCollider = GetComponent<PolygonCollider2D>();
 
         smokeParticles = smoke.GetComponent<ParticleSystem>();
         engineParticles = engine.GetComponent<ParticleSystem>();
@@ -132,7 +130,7 @@ public class Player : MonoBehaviour {
     private void SpawnExplosion() {
         GameObject explosion = Instantiate(explosionPrefab);
         explosion.transform.position = this.transform.position;
-        Destroy(explosion, explosion.GetComponent<ParticleSystem>().duration);
+        Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
     }
 
     private Vector3 StartPosition() {

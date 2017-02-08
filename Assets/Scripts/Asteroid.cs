@@ -38,7 +38,7 @@ public class Asteroid : MonoBehaviour {
     private void SpawnExplosion() {
         GameObject explosion = Instantiate(explosionPrefab);
         explosion.transform.position = this.transform.position;
-        Destroy(explosion, explosion.GetComponent<ParticleSystem>().duration);
+        Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
     }
 
     public void Explode() {
