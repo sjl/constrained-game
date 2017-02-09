@@ -54,9 +54,11 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (InputRotate()) {
-            float direction = (playerNumber == 1 ? 1.0f : -1.0f);
-            physics.AddTorque(torque * direction);
+        if (InputRotateClockwise()) {
+            physics.AddTorque(torque * -1.0f);
+        }
+        if (InputRotateCounterClockwise()) {
+            physics.AddTorque(torque * 1.0f);
         }
     }
 
@@ -71,11 +73,11 @@ public class Player : MonoBehaviour {
             engineParticles.Stop();
         }
 
-        if (InputRotate()) {
-            rotatorParticles.Play();
-        } else {
-            rotatorParticles.Stop();
-        }
+        // if (InputRotate()) {
+        //     rotatorParticles.Play();
+        // } else {
+        //     rotatorParticles.Stop();
+        // }
     }
 
     // Input ------------------------------------------------------------------
@@ -86,18 +88,32 @@ public class Player : MonoBehaviour {
             return inputEnabled && Input.GetKey(KeyCode.K);
         }
     }
-    private bool InputRotate() {
+    // private bool InputRotate() {
+    //     if (playerNumber == 1) {
+    //         return inputEnabled && Input.GetKey(KeyCode.A);
+    //     } else {
+    //         return inputEnabled && Input.GetKey(KeyCode.L);
+    //     }
+    // }
+    private bool InputShoot() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKey(KeyCode.A);
+            return inputEnabled && Input.GetKeyDown(KeyCode.S);
+        } else {
+            return inputEnabled && Input.GetKeyDown(KeyCode.K);
+        }
+    }
+    private bool InputRotateClockwise() {
+        if (playerNumber == 1) {
+            return inputEnabled && Input.GetKey(KeyCode.D);
         } else {
             return inputEnabled && Input.GetKey(KeyCode.L);
         }
     }
-    private bool InputShoot() {
+    private bool InputRotateCounterClockwise() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKeyDown(KeyCode.D);
+            return inputEnabled && Input.GetKey(KeyCode.A);
         } else {
-            return inputEnabled && Input.GetKeyDown(KeyCode.J);
+            return inputEnabled && Input.GetKey(KeyCode.J);
         }
     }
 
@@ -112,6 +128,8 @@ public class Player : MonoBehaviour {
 
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.player = gameObject;
+
+        SoundManager.Shoot(playerNumber);
     }
 
     // Respawning -------------------------------------------------------------
@@ -119,6 +137,7 @@ public class Player : MonoBehaviour {
         if (!invincible) {
             SpawnExplosion();
             Spawn();
+            SoundManager.PlayerDeath();
         }
     }
 
