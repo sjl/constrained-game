@@ -23,7 +23,6 @@ public class MessageManager : MonoBehaviour {
         float x = location.x;
         float delay = 0.0f;
 
-        // for (int i = message.Length - 1; i >= 0; i--) {
         for (int i = 0; i < message.Length; i++) {
             char c = message[i];
             GameObject letter = Instantiate(instance.letterPrefab);

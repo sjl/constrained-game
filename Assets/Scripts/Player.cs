@@ -54,11 +54,9 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if (InputRotateClockwise()) {
-            physics.AddTorque(torque * -1.0f);
-        }
-        if (InputRotateCounterClockwise()) {
-            physics.AddTorque(torque * 1.0f);
+        if (InputRotate()) {
+            float direction = (playerNumber == 1 ? 1.0f : -1.0f);
+            physics.AddTorque(torque * direction);
         }
     }
 
@@ -73,11 +71,11 @@ public class Player : MonoBehaviour {
             engineParticles.Stop();
         }
 
-        // if (InputRotate()) {
-        //     rotatorParticles.Play();
-        // } else {
-        //     rotatorParticles.Stop();
-        // }
+        if (InputRotate()) {
+            rotatorParticles.Play();
+        } else {
+            rotatorParticles.Stop();
+        }
     }
 
     // Input ------------------------------------------------------------------
@@ -88,32 +86,18 @@ public class Player : MonoBehaviour {
             return inputEnabled && Input.GetKey(KeyCode.K);
         }
     }
-    // private bool InputRotate() {
-    //     if (playerNumber == 1) {
-    //         return inputEnabled && Input.GetKey(KeyCode.A);
-    //     } else {
-    //         return inputEnabled && Input.GetKey(KeyCode.L);
-    //     }
-    // }
-    private bool InputShoot() {
+    private bool InputRotate() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKeyDown(KeyCode.S);
-        } else {
-            return inputEnabled && Input.GetKeyDown(KeyCode.K);
-        }
-    }
-    private bool InputRotateClockwise() {
-        if (playerNumber == 1) {
-            return inputEnabled && Input.GetKey(KeyCode.D);
+            return inputEnabled && Input.GetKey(KeyCode.A);
         } else {
             return inputEnabled && Input.GetKey(KeyCode.L);
         }
     }
-    private bool InputRotateCounterClockwise() {
+    private bool InputShoot() {
         if (playerNumber == 1) {
-            return inputEnabled && Input.GetKey(KeyCode.A);
+            return inputEnabled && Input.GetKeyDown(KeyCode.D);
         } else {
-            return inputEnabled && Input.GetKey(KeyCode.J);
+            return inputEnabled && Input.GetKeyDown(KeyCode.J);
         }
     }
 
@@ -136,8 +120,9 @@ public class Player : MonoBehaviour {
     public void Kill() {
         if (!invincible) {
             SpawnExplosion();
-            Spawn();
             SoundManager.PlayerDeath();
+            StartCoroutine(Spawn());
+            Spawn();
         }
     }
 
@@ -149,10 +134,20 @@ public class Player : MonoBehaviour {
 
     private Vector3 StartPosition() {
         if (playerNumber == 1) {
-            return new Vector3(-8.0f, 0.0f, 0.0f);
+            return new Vector3(-8.0f, 0.0f, -1.0f);
         } else {
-            return new Vector3(8.0f, 0.0f, 0.0f);
+            return new Vector3(8.0f, 0.0f, -1.0f);
         }
+    }
+    private Vector3 HiddenPosition() {
+        if (playerNumber == 1) {
+            return new Vector3(-800.0f, 0.0f, 0.0f);
+        } else {
+            return new Vector3(800.0f, 0.0f, 0.0f);
+        }
+    }
+    private void HideShip() {
+        transform.position = HiddenPosition();
     }
     private void ResetShip() {
         // Zero out the physics stuff so we don't move a bit after respawn.
@@ -164,9 +159,21 @@ public class Player : MonoBehaviour {
         transform.eulerAngles = Vector3.zero;
         transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
     }
-    private void Spawn() {
+    private IEnumerator Spawn() {
+        inputEnabled = false;
+        HideShip();
+
+        Vector3 messagePoint = StartPosition() + new Vector3(-0.25f, 0.25f, 0.0f);
+
+        MessageManager.ShowMessage("3", messagePoint);
+        yield return new WaitForSeconds(1.2f);
+        MessageManager.ShowMessage("2", messagePoint);
+        yield return new WaitForSeconds(1.2f);
+        MessageManager.ShowMessage("1", messagePoint);
+        yield return new WaitForSeconds(1.2f);
+
+        inputEnabled = true;
         ResetShip();
-        smokeParticles.Stop();
 
         var tween = new GoTweenConfig();
         tween.easeType = GoEaseType.BounceOut;
