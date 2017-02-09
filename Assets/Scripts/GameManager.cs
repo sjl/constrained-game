@@ -25,6 +25,6 @@ public class GameManager : MonoBehaviour {
         int minutes = intClock / 60;
         int seconds = intClock % 60;
 
-        timer.text = System.String.Format("{0:d}:{1:d}", minutes, seconds);
+        timer.text = System.String.Format("{0:d}:{1:d2}", minutes, seconds);
     }
 }
