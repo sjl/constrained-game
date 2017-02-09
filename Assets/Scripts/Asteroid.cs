@@ -42,6 +42,7 @@ public class Asteroid : MonoBehaviour {
     }
 
     public void Explode() {
+        SoundManager.AsteroidDeath();
         SpawnExplosion();
         SpawnChildren();
         Destroy(gameObject);

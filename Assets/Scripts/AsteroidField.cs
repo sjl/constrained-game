@@ -5,32 +5,30 @@ using UnityEngine;
 public class AsteroidField : MonoBehaviour {
     public GameObject asteroidPrefab;
 
-    public float density = 0.02f;
-    public float densityScale = 1.1f;
+    public int asteroidSpawnAmount = 0;
+    public int asteroidSpawnScale = 2;
 
     public static int asteroidCount = 0;
     public float asteroidSpeedMin = 100.0f;
     public float asteroidSpeedMax = 300.0f;
 
     void Start () {
-        PopulateField(density);
+        PopulateField(asteroidSpawnAmount);
     }
 
     void Update () {
         if (asteroidCount == 0) {
-            PopulateField(density);
-            density *= densityScale;
+            PopulateField(asteroidSpawnAmount);
+            asteroidSpawnAmount += asteroidSpawnScale;
             SoundManager.FieldCleared();
         }
     }
 
-    private void PopulateField(float density) {
-        for (float x = -12.0f; x <= 12.0f; x += 1.0f) {
-            for (float y = -10.0f; y <= 10.0f; y += 1.0f) {
-                if (Random.Range(0.0f, 1.0f) < density) {
-                    Spawn(x, y);
-                }
-            }
+    private void PopulateField(int amount) {
+
+        for (int i = 0; i < amount; i++) {
+            Spawn(Random.Range(-13.0f, 13.0f),
+                  Random.Range(-10.0f, 10.0f));
         }
     }
 

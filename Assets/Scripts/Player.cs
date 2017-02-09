@@ -112,12 +112,16 @@ public class Player : MonoBehaviour {
 
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.player = gameObject;
+
+        SoundManager.Shoot(playerNumber);
     }
 
     // Respawning -------------------------------------------------------------
     public void Kill() {
         if (!invincible) {
             SpawnExplosion();
+            SoundManager.PlayerDeath();
+            StartCoroutine(Spawn());
             Spawn();
         }
     }
@@ -130,10 +134,20 @@ public class Player : MonoBehaviour {
 
     private Vector3 StartPosition() {
         if (playerNumber == 1) {
-            return new Vector3(-8.0f, 0.0f, 0.0f);
+            return new Vector3(-8.0f, 0.0f, -1.0f);
         } else {
-            return new Vector3(8.0f, 0.0f, 0.0f);
+            return new Vector3(8.0f, 0.0f, -1.0f);
         }
+    }
+    private Vector3 HiddenPosition() {
+        if (playerNumber == 1) {
+            return new Vector3(-800.0f, 0.0f, 0.0f);
+        } else {
+            return new Vector3(800.0f, 0.0f, 0.0f);
+        }
+    }
+    private void HideShip() {
+        transform.position = HiddenPosition();
     }
     private void ResetShip() {
         // Zero out the physics stuff so we don't move a bit after respawn.
@@ -145,9 +159,21 @@ public class Player : MonoBehaviour {
         transform.eulerAngles = Vector3.zero;
         transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
     }
-    private void Spawn() {
+    private IEnumerator Spawn() {
+        inputEnabled = false;
+        HideShip();
+
+        Vector3 messagePoint = StartPosition() + new Vector3(-0.25f, 0.25f, 0.0f);
+
+        MessageManager.ShowMessage("3", messagePoint);
+        yield return new WaitForSeconds(1.2f);
+        MessageManager.ShowMessage("2", messagePoint);
+        yield return new WaitForSeconds(1.2f);
+        MessageManager.ShowMessage("1", messagePoint);
+        yield return new WaitForSeconds(1.2f);
+
+        inputEnabled = true;
         ResetShip();
-        smokeParticles.Stop();
 
         var tween = new GoTweenConfig();
         tween.easeType = GoEaseType.BounceOut;
