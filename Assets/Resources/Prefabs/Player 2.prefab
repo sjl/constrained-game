@@ -115,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1661483778087088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: 0}
+  m_LocalPosition: {x: 8, y: 0, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4086587186440966}
@@ -213,7 +213,7 @@ MonoBehaviour:
   maxVelocity: 10
   bulletPrefab: {fileID: 1938129301403050, guid: b85956705db8641a7b8e2afd42b070db,
     type: 2}
-  explosionPrefab: {fileID: 1398616947291676, guid: f3ed647d9a0f64e51bad29427e59f0aa,
+  explosionPrefab: {fileID: 1398616947291676, guid: 9586af6a4bd1843b4980fb9dba9e35b7,
     type: 2}
   engine: {fileID: 1384949978579684}
   rotator: {fileID: 1744536822422908}
@@ -273,7 +273,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 405705549
+  randomSeed: 480375465
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -2874,7 +2874,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1253782449
+  randomSeed: -1008819029
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -5475,7 +5475,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -642137915
+  randomSeed: -955605070
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8023,7 +8023,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9ba928ea21449407c9ecc43ceb6b122a, type: 2}
+  - {fileID: 2100000, guid: 87f97db4409b04e1993024cbc730c3b4, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -8123,7 +8123,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9ba928ea21449407c9ecc43ceb6b122a, type: 2}
+  - {fileID: 2100000, guid: 87f97db4409b04e1993024cbc730c3b4, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -8190,7 +8190,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300014, guid: d8498c3b8e10cf947aa30703c5122b9d, type: 3}
+  m_Sprite: {fileID: 21300032, guid: d8498c3b8e10cf947aa30703c5122b9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

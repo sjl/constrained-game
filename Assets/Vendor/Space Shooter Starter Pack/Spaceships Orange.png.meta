@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: d8498c3b8e10cf947aa30703c5122b9d
+timeCreated: 1486637925
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Spaceships_0
@@ -11,10 +13,19 @@ TextureImporter:
     21300012: Spaceships_6
     21300014: Spaceships_7
     21300016: Spaceships_8
+    21300018: Spaceships Orange_0
+    21300020: Spaceships Orange_1
+    21300022: Spaceships Orange_2
+    21300024: Spaceships Orange_3
+    21300026: Spaceships Orange_4
+    21300028: Spaceships Orange_5
+    21300030: Spaceships Orange_6
+    21300032: Spaceships Orange_7
+    21300034: Spaceships Orange_8
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -93,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spaceships_0
+      name: Spaceships Orange_0
       rect:
         serializedVersion: 2
         x: 0
@@ -101,12 +112,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_1
+      name: Spaceships Orange_1
       rect:
         serializedVersion: 2
         x: 36
@@ -114,12 +125,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_2
+      name: Spaceships Orange_2
       rect:
         serializedVersion: 2
         x: 72
@@ -127,12 +138,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_3
+      name: Spaceships Orange_3
       rect:
         serializedVersion: 2
         x: 0
@@ -140,12 +151,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_4
+      name: Spaceships Orange_4
       rect:
         serializedVersion: 2
         x: 36
@@ -153,12 +164,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_5
+      name: Spaceships Orange_5
       rect:
         serializedVersion: 2
         x: 72
@@ -166,12 +177,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_6
+      name: Spaceships Orange_6
       rect:
         serializedVersion: 2
         x: 0
@@ -179,12 +190,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_7
+      name: Spaceships Orange_7
       rect:
         serializedVersion: 2
         x: 36
@@ -192,12 +203,12 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     - serializedVersion: 2
-      name: Spaceships_8
+      name: Spaceships Orange_8
       rect:
         serializedVersion: 2
         x: 72
@@ -205,10 +216,10 @@ TextureImporter:
         width: 36
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      tessellationDetail: -1
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
