@@ -23,7 +23,6 @@ ExportedObj/
 *.svd
 *.pdb
 
-
 # Unity3D generated meta files
 *.pidb.meta
 
@@ -35,3 +34,5 @@ sysinfo.txt
 *.unitypackage
 
 Assets/Scratch-Steve*
+
+*.DS_Store
