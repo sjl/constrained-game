@@ -18,6 +18,17 @@ public class Bullet : MonoBehaviour {
         } else if (collision.gameObject.tag == "Asteroid") {
             Destroy(gameObject);
             collision.gameObject.GetComponent<Asteroid>().Explode();
+
+            Player p = player.GetComponent<Player>();
+
+            p.streak += 1;
+            if (p.streak == 10) {
+                SoundManager.Streak10();
+                MessageManager.ShowMessage("10 IN A ROW", player.transform.position);
+            } else if (p.streak == 20) {
+                SoundManager.Streak20();
+                MessageManager.ShowMessage("20 IN A ROW", player.transform.position);
+            }
         } else if (collision.gameObject.tag == "Bounds") {
             Destroy(gameObject);
         }

@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     private int invincibleLayer;
     private int normalLayer;
 
+    public int streak = 0;
+
     private float bulletSpeed = 350.0f;
 
     public GameObject bulletPrefab;
@@ -150,6 +152,8 @@ public class Player : MonoBehaviour {
         transform.position = HiddenPosition();
     }
     private void ResetShip() {
+        streak = 0;
+
         // Zero out the physics stuff so we don't move a bit after respawn.
         physics.velocity = Vector2.zero;
         physics.angularVelocity = 0.0f;

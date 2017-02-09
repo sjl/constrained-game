@@ -211,7 +211,7 @@ MonoBehaviour:
   thrust: 20
   torque: 2
   maxVelocity: 10
-  bulletPrefab: {fileID: 1938129301403050, guid: b85956705db8641a7b8e2afd42b070db,
+  bulletPrefab: {fileID: 1938129301403050, guid: cb965afa99ddc4959bd0aa8044ace60b,
     type: 2}
   explosionPrefab: {fileID: 1398616947291676, guid: 9586af6a4bd1843b4980fb9dba9e35b7,
     type: 2}

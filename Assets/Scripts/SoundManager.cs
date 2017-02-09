@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour {
     public GameObject playerShoot2;
     public GameObject playerDeath;
     public GameObject asteroidDeath;
+    public GameObject streak10;
+    public GameObject streak20;
 
     void Awake() {
         if(instance == null) {
@@ -41,5 +43,11 @@ public class SoundManager : MonoBehaviour {
     }
     public static void AsteroidDeath() {
         instance.asteroidDeath.GetComponent<AudioSource>().Play();
+    }
+    public static void Streak10() {
+        instance.streak20.GetComponent<AudioSource>().Play();
+    }
+    public static void Streak20() {
+        instance.streak10.GetComponent<AudioSource>().Play();
     }
 }
