@@ -10,17 +10,17 @@ public class UIController : MonoBehaviour {
 
     public void mainMenuPressed()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void retryPressed()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Game");
     }
 
     public void playPressed()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Game");
     }
 
     public void exitPressed()
@@ -30,8 +30,12 @@ public class UIController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Score1.text = "" + PlayerPrefs.GetInt("score1");
-        Score2.text = "" + PlayerPrefs.GetInt("score2");
+        if (Score1 != null) {
+            Score1.text = "" + PlayerPrefs.GetInt("score1");
+        }
+        if (Score2 != null) {
+            Score2.text = "" + PlayerPrefs.GetInt("score2");
+        }
 	}
 	
 	// Update is called once per frame
