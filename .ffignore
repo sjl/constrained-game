@@ -1,2 +1,4 @@
+syntax:glob
 Assets/Vendor
 Library
+*.prefab

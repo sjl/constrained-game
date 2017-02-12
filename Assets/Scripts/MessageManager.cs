@@ -39,7 +39,6 @@ public class MessageManager : MonoBehaviour {
     }
 
     private static void TweenLetter(GameObject letter, Vector3 location, float initialDelay) {
-        float x = location.x;
         float y = location.y;
         float z = location.z;
 
