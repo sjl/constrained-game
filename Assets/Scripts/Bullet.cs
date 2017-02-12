@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour {
 
             Player p = player.GetComponent<Player>();
 
+            p.score += 100;
             p.streak += 1;
             if (p.streak == 10) {
                 SoundManager.Streak10();

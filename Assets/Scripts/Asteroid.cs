@@ -5,6 +5,7 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour {
     public GameObject explosionPrefab;
     public GameObject childPrefab;
+    public int pointValue;
 
     void Start () {
     }

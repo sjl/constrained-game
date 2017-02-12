@@ -137,6 +137,7 @@ MonoBehaviour:
     type: 2}
   childPrefab: {fileID: 1799699635053636, guid: a3f7eb46274434bac9a60878cd4bf055,
     type: 2}
+  pointValue: 0
 --- !u!212 &212285670845432338
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 150
   m_Sprite: {fileID: 21300004, guid: 5b4fe00be9cbb254c8eb45016d9a8e3b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -13,6 +13,8 @@ public class Player : MonoBehaviour {
     private bool inputEnabled = true;
     private bool invincible = false;
 
+    public int score = 0;
+
     private int invincibleLayer;
     private int normalLayer;
 
@@ -44,6 +46,8 @@ public class Player : MonoBehaviour {
 
         invincibleLayer = LayerMask.NameToLayer("Invincible");
         normalLayer = LayerMask.NameToLayer("Gravity");
+
+        score = 0;
 
         Spawn();
     }

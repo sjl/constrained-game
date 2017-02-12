@@ -136,6 +136,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1107207385875368, guid: ba67be42069ea476483e4a190c8e8206,
     type: 2}
   childPrefab: {fileID: 0}
+  pointValue: 200
 --- !u!212 &212930767395188378
 SpriteRenderer:
   m_ObjectHideFlags: 1
