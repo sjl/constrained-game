@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public Text timer;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour {
         clock -= Time.deltaTime;
 
         if (clock < 0.0f) {
-            // TODO: Game Over
+            SceneManager.LoadScene("EndScreen");
             return;
         }
 

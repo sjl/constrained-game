@@ -6,7 +6,6 @@ public class AsteroidField : MonoBehaviour {
     public GameObject asteroidPrefab;
 
     public int asteroidSpawnAmount = 0;
-    public int asteroidSpawnScale = 2;
 
     public static int asteroidCount = 0;
     public float asteroidSpeedMin = 100.0f;
@@ -18,14 +17,11 @@ public class AsteroidField : MonoBehaviour {
 
     void Update () {
         if (asteroidCount == 0) {
-            PopulateField(asteroidSpawnAmount);
-            asteroidSpawnAmount += asteroidSpawnScale;
-            SoundManager.FieldCleared();
+            SceneManager.LoadScene("EndScreen");
         }
     }
 
     private void PopulateField(int amount) {
-
         for (int i = 0; i < amount; i++) {
             Spawn(Random.Range(-13.0f, 13.0f),
                   Random.Range(-10.0f, 10.0f));
