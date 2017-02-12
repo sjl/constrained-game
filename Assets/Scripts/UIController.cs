@@ -23,6 +23,11 @@ public class UIController : MonoBehaviour {
         SceneManager.LoadScene("Game");
     }
 
+    public void creditsPressed()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void exitPressed()
     {
         Application.Quit();
