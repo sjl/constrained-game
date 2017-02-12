@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Lose : MonoBehaviour {
 
-    public int win = PlayerPrefs.GetInt("success");
-    public int player1 = PlayerPrefs.GetInt("score1");
-    public int player2 = PlayerPrefs.GetInt("score2");
+    int win = PlayerPrefs.GetInt("success");
+    int player1 = PlayerPrefs.GetInt("score1");
+    int player2 = PlayerPrefs.GetInt("score2");
 
     // Use this for initialization
     void Start () {
