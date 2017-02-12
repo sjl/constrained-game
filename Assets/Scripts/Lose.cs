@@ -5,17 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class Lose : MonoBehaviour {
 
-    int win = PlayerPrefs.GetInt("success");
-    int player1 = PlayerPrefs.GetInt("score1");
-    int player2 = PlayerPrefs.GetInt("score2");
-
     // Use this for initialization
     void Start () {
-        if(win == 0)
+
+        if (PlayerPrefs.GetInt("success") == 0)
         {
             Destroy(gameObject);
         }
-	}
+
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {

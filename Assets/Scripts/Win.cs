@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Win : MonoBehaviour {
-    int win = PlayerPrefs.GetInt("success");
-    int player1 = PlayerPrefs.GetInt("score1");
-    int player2 = PlayerPrefs.GetInt("score2");
 
 	// Use this for initialization
 	void Start () {
-        if (win == 1)
+
+        if (PlayerPrefs.GetInt("success") == 1)
         {
             Destroy(gameObject);
         }
