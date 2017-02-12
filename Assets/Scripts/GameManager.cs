@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
     void Update () {
         clock -= Time.deltaTime;
 
-        if (clock < 0.0f) {
-            SceneManager.LoadScene("EndScreen");
+        if (clock < 0.0f || Input.GetKeyDown(KeyCode.Space)) {
+            EndGame(false);
             return;
         }
 
@@ -33,5 +33,13 @@ public class GameManager : MonoBehaviour {
         timer.text = System.String.Format("{0:d}:{1:d2}", minutes, seconds);
         score1.text = System.String.Format("{0:d}", player1.score);
         score2.text = System.String.Format("{0:d}", player2.score);
+    }
+
+    public void EndGame(bool success) {
+        PlayerPrefs.SetInt("success", success ? 1 : 0);
+        PlayerPrefs.SetInt("score1", player1.score);
+        PlayerPrefs.SetInt("score2", player2.score);
+
+        SceneManager.LoadScene("EndScreen");
     }
 }

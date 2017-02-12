@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class AsteroidField : MonoBehaviour {
     public GameObject asteroidPrefab;
+    public GameManager gameManager;
 
     public int asteroidSpawnAmount = 0;
 
@@ -18,7 +18,7 @@ public class AsteroidField : MonoBehaviour {
 
     void Update () {
         if (asteroidCount == 0) {
-            SceneManager.LoadScene("EndScreen");
+            gameManager.EndGame(true);
         }
     }
 
