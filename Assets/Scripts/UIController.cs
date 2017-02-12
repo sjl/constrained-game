@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour {
 
     public void mainMenuPressed()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void retryPressed()
@@ -15,9 +15,19 @@ public class UIController : MonoBehaviour {
         SceneManager.LoadScene(0);
     }
 
+    public void playPressed()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void exitPressed()
+    {
+        Application.Quit();
+    }
+
 	// Use this for initialization
 	void Start () {
-		
+    
 	}
 	
 	// Update is called once per frame
