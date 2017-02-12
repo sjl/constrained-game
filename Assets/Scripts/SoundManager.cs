@@ -5,14 +5,15 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour {
     public static SoundManager instance;
 
-    public GameObject fieldCleared;
-    public GameObject friendlyFire;
-    public GameObject playerShoot1;
-    public GameObject playerShoot2;
-    public GameObject playerDeath;
-    public GameObject asteroidDeath;
-    public GameObject streak10;
-    public GameObject streak20;
+    public AudioSource fieldCleared;
+    public AudioSource friendlyFire;
+    public AudioSource playerShoot1;
+    public AudioSource playerShoot2;
+    public AudioSource playerDeath;
+    public AudioSource asteroidDeath;
+    public AudioSource streak10;
+    public AudioSource streak20;
+    public AudioSource watchOut;
 
     void Awake() {
         if(instance == null) {
@@ -26,28 +27,31 @@ public class SoundManager : MonoBehaviour {
     }
 
     public static void FieldCleared() {
-        instance.fieldCleared.GetComponent<AudioSource>().Play();
+        instance.fieldCleared.Play();
     }
     public static void FriendlyFire() {
-        instance.friendlyFire.GetComponent<AudioSource>().Play();
+        instance.friendlyFire.Play();
     }
     public static void Shoot(int player) {
         if (player == 1) {
-            instance.playerShoot1.GetComponent<AudioSource>().Play();
+            instance.playerShoot1.Play();
         } else {
-            instance.playerShoot2.GetComponent<AudioSource>().Play();
+            instance.playerShoot2.Play();
         }
     }
     public static void PlayerDeath() {
-        instance.playerDeath.GetComponent<AudioSource>().Play();
+        instance.playerDeath.Play();
     }
     public static void AsteroidDeath() {
-        instance.asteroidDeath.GetComponent<AudioSource>().Play();
+        instance.asteroidDeath.Play();
     }
     public static void Streak10() {
-        instance.streak20.GetComponent<AudioSource>().Play();
+        instance.streak20.Play();
     }
     public static void Streak20() {
-        instance.streak10.GetComponent<AudioSource>().Play();
+        instance.streak10.Play();
+    }
+    public static void WatchOut() {
+        instance.watchOut.Play();
     }
 }

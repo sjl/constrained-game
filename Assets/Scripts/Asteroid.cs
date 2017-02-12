@@ -55,6 +55,9 @@ public class Asteroid : MonoBehaviour {
         if (collision.gameObject.tag == "Player") {
             Explode();
             collision.gameObject.GetComponent<Player>().Kill();
+            if (Random.Range(0.0f, 1.0f) < 0.02f) {
+                SoundManager.WatchOut();
+            }
         }
     }
 }
