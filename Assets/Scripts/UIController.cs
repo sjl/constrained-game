@@ -10,17 +10,22 @@ public class UIController : MonoBehaviour {
 
     public void mainMenuPressed()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void retryPressed()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void playPressed()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
+    }
+
+    public void creditsPressed()
+    {
+        SceneManager.LoadScene(3);
     }
 
     public void exitPressed()
