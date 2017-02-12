@@ -29,6 +29,15 @@ public class Bullet : MonoBehaviour {
             } else if (p.streak == 20) {
                 SoundManager.Streak20();
                 MessageManager.ShowMessage("20 IN A ROW", player.transform.position);
+            } else if (p.streak == 30) {
+                SoundManager.Streak30();
+                MessageManager.ShowMessage("30 IN A ROW", player.transform.position);
+            } else if (p.streak == 40) {
+                SoundManager.Streak40();
+                MessageManager.ShowMessage("40 IN A ROW", player.transform.position);
+            } else if (p.streak == 50) {
+                SoundManager.Streak50();
+                MessageManager.ShowMessage("50 IN A ROW", player.transform.position);
             }
         } else if (collision.gameObject.tag == "Bounds") {
             Destroy(gameObject);

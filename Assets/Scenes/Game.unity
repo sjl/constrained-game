@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroidPrefab: {fileID: 1437489604865516, guid: 4b17095477a774030996b1306aca1fc9,
     type: 2}
+  gameManager: {fileID: 1053872998}
   asteroidSpawnAmount: 5
   asteroidSpeedMin: 200
   asteroidSpeedMax: 400

@@ -13,6 +13,9 @@ public class SoundManager : MonoBehaviour {
     public AudioSource asteroidDeath;
     public AudioSource streak10;
     public AudioSource streak20;
+    public AudioSource streak30;
+    public AudioSource streak40;
+    public AudioSource streak50;
     public AudioSource watchOut;
 
     void Awake() {
@@ -46,10 +49,19 @@ public class SoundManager : MonoBehaviour {
         instance.asteroidDeath.Play();
     }
     public static void Streak10() {
-        instance.streak20.Play();
+        instance.streak10.Play();
     }
     public static void Streak20() {
-        instance.streak10.Play();
+        instance.streak20.Play();
+    }
+    public static void Streak30() {
+        instance.streak30.Play();
+    }
+    public static void Streak40() {
+        instance.streak40.Play();
+    }
+    public static void Streak50() {
+        instance.streak50.Play();
     }
     public static void WatchOut() {
         instance.watchOut.Play();
