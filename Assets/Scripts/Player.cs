@@ -49,7 +49,7 @@ public class Player : MonoBehaviour {
 
         score = 0;
 
-        Spawn();
+        StartCoroutine(Spawn(true));
     }
 
     void FixedUpdate () {
@@ -127,8 +127,7 @@ public class Player : MonoBehaviour {
         if (!invincible) {
             SpawnExplosion();
             SoundManager.PlayerDeath();
-            StartCoroutine(Spawn());
-            Spawn();
+            StartCoroutine(Spawn(false));
         }
     }
 
@@ -167,18 +166,21 @@ public class Player : MonoBehaviour {
         transform.eulerAngles = Vector3.zero;
         transform.localScale = new Vector3(0.0f, 0.0f, 0.0f);
     }
-    private IEnumerator Spawn() {
-        inputEnabled = false;
-        HideShip();
 
-        Vector3 messagePoint = StartPosition() + new Vector3(-0.25f, 0.25f, 0.0f);
+    private IEnumerator Spawn(bool initial) {
+        if (!initial) {
+            inputEnabled = false;
+            HideShip();
 
-        MessageManager.ShowMessage("3", messagePoint);
-        yield return new WaitForSeconds(1.2f);
-        MessageManager.ShowMessage("2", messagePoint);
-        yield return new WaitForSeconds(1.2f);
-        MessageManager.ShowMessage("1", messagePoint);
-        yield return new WaitForSeconds(1.2f);
+            Vector3 messagePoint = StartPosition() + new Vector3(-0.25f, 0.25f, 0.0f);
+
+            MessageManager.ShowMessage("3", messagePoint);
+            yield return new WaitForSeconds(1.2f);
+            MessageManager.ShowMessage("2", messagePoint);
+            yield return new WaitForSeconds(1.2f);
+            MessageManager.ShowMessage("1", messagePoint);
+            yield return new WaitForSeconds(1.2f);
+        }
 
         inputEnabled = true;
         ResetShip();
