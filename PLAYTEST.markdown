@@ -47,6 +47,7 @@ No asking questions during a test, but yes between tests.
 
 Survey at the end.
 
+
 Playtest Plan
 =============
 
@@ -112,6 +113,8 @@ Script for Intermission Interview
 ---------------------------------
 
 What were your first impressions?
+
+(remember to keep to 1 minute)
 
 Researcher Tasks During Gameplay Round 2
 ----------------------------------------
