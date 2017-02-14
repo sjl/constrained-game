@@ -12,7 +12,8 @@ public class MainMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.anyKey)
+        if(Input.GetMouseButton(0) || Input.GetMouseButton(1)) { }
+		else if(Input.anyKey)
         {
             SceneManager.LoadScene("Game");
         }
